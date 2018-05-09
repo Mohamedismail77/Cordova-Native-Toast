@@ -1,0 +1,29 @@
+{
+  "name": "NativeToast",
+  "version": "0.0.1",
+  "description": "\n      This plugins provide the interaction of using native toast view\n    ",
+  "cordova": {
+    "id": "cordova-android-plugin-native-toast",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamedismail77/Cordova-Native-Toast.git"
+  },
+  "keywords": [
+    "native",
+    "android",
+    "toast",
+    "notification",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "M.Ismail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohamedismail77/Cordova-Native-Toast/issues"
+  },
+  "homepage": "https://github.com/Mohamedismail77/Cordova-Native-Toast#readme"
+}

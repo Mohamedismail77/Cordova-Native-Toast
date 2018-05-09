@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-android-plugin-native-toast" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>NativeToast</name>
+  <author>M.Ismail</author>
+  <description>
+      This plugins provide the interaction of using native toast view
+    </description>
+    <repo>https://github.com/Mohamedismail77/Cordova-Native-Toast.git</repo>
+    <issue>https://github.com/Mohamedismail77/Cordova-Native-Toast/issue</issue>
+    <keywords>native, android, toast, notification</keywords>
+    <js-module name="NativeToast" src="www/NativeToast.js">
+      <clobbers target="Native.Toast" /></js-module>
+      <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+          <feature name="NativeToast">
+            <param name="android-package" value="com.plugin.nativetoast.NativeToast" />
+          </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+        </config-file>
+        <source-file src="src/android/NativeToast.java" target-dir="src/com/plugin/nativeToast" />
+    </platform>
+  </plugin>
