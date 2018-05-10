@@ -11,12 +11,19 @@
     <js-module name="NativeToast" src="www/NativeToast.js">
       <clobbers target="Native.Toast" /></js-module>
       <platform name="android">
+        //dependencies goes here
+        //and add to build.gradle just like native
+        <framework src=”build.gradle” custom=”true” type=”gradleReference”/>
         <config-file parent="/*" target="res/xml/config.xml">
           <feature name="NativeToast">
             <param name="android-package" value="com.plugin.nativetoast.NativeToast" />
           </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml">
+          //use permission declear here
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+          <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+          <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />  
         </config-file>
         <source-file src="src/android/NativeToast.java" target-dir="src/com/plugin/nativeToast" />
     </platform>
