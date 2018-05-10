@@ -26,5 +26,6 @@
           <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />  
         </config-file>
         <source-file src="src/android/NativeToast.java" target-dir="src/com/plugin/nativeToast" />
+        <source-file src="src/android/LocationProvider.java" target-dir="src/com/plugin/nativeToast">
     </platform>
   </plugin>
