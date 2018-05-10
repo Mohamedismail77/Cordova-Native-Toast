@@ -53,7 +53,7 @@ public class NativeToast extends CordovaPlugin implements LocationProvider.onLoa
           Context context = this.cordova.getActivity().getApplicationContext();
           Toast toast = Toast.makeText(context, message, time);
           toast.show();
-          PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "Lat: "+ locationProvider.getmLatitude() + "Long: " + locationProvider.getmLongitude());
+          PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, locationProvider.getmLatitude() + "," + locationProvider.getmLongitude());
           pluginResult.setKeepCallback(true); // keep callback
           callbackContext.sendPluginResult(pluginResult);
           updateLocation = callbackContext;
@@ -67,7 +67,7 @@ public class NativeToast extends CordovaPlugin implements LocationProvider.onLoa
 
         
         if(updateLocation != null){
-            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, "Lat: "+ locationProvider.getmLatitude() + "Long: " + locationProvider.getmLongitude());
+            PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, locationProvider.getmLatitude() + "," + locationProvider.getmLongitude());
             pluginResult.setKeepCallback(true); // keep callback
             updateLocation.sendPluginResult(pluginResult);
         }
