@@ -10,6 +10,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.plugin.nativetoast.NativeToast;
 import android.widget.Toast;
 
 
@@ -25,19 +26,25 @@ public class LocationProvider {
     private float mBearing;
     private float mAccuracy;
 
+    onLoactionUpdated onLoactionUpdated;
 
-    public LocationProvider(Context context) {
+    public interface onLoactionUpdated{
+        void setOnLocationUpdate(Location location);
+    }
+
+
+    public LocationProvider(Context context, NativeToast nativeToast ) {
         mContext = context;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
         mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(1);
         mLocationRequest.setFastestInterval(5);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        onLoactionUpdated = (onLoactionUpdated) nativeToast;
         mLocationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {
-                for (Location location : locationResult.getLocations()) {
-
+                Location location = locationResult.getLastLocation();
                     //TODO
                     //save location Location
                     mLatitude = location.getLatitude();
@@ -45,8 +52,9 @@ public class LocationProvider {
                     mAltitude = location.getAltitude();
                     mSpeed = location.getSpeed();
                     mBearing = location.getBearing();
-                    mAccuracy = location.getAccuracy(); 
-                }
+                    mAccuracy = location.getAccuracy();
+                    onLoactionUpdated.setOnLocationUpdate(location);
+
             };
         };
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
