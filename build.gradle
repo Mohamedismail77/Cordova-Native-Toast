@@ -12,6 +12,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:11.8.0'
 }
 
-apply plugin: "com.google.gms.google-services"
+
 
 
